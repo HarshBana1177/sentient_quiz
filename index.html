@@ -4,17 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sentient Quiz</title>
+<<<<<<< HEAD
   <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700,900&display=swap" rel="stylesheet">
   <style>
     html, body {
       min-height: 100vh;
       background: #fafbfc;
       color: #1a1d22;
+=======
+  <style>
+    :root {
+      --main-bg: linear-gradient(120deg, #05182e 0%, #21e6c1 100%);
+      --main-border: #21e6c1;
+      --main-text: #fff;
+      --option-bg: #123050;
+      --option-hover: #21e6c1cc;
+      --container-bg: rgba(14,22,34, 0.98);
+      --container-color: #f2fdfb;
+      --card-shadow: 0 12px 48px 12px #21e6c11a, 0 2px 24px #0e1b30dd, 0 0 0 2px #21e6c1cc;
+      --button-gradient: linear-gradient(90deg, #21e6c1, #278ea5 90%);
+      --matrix-rain: #21e6c1;
+    }
+    [data-theme="cyberpunk"] {
+      --main-bg: linear-gradient(120deg, #14102b 0%, #ff36df 60%, #00ffd2 100%);
+      --main-border: #ff36df;
+      --main-text: #f9f9ff;
+      --option-bg: #320a49;
+      --option-hover: #ff36dfbb;
+      --container-bg: rgba(44, 9, 51, 0.98);
+      --container-color: #ffbfff;
+      --card-shadow: 0 12px 48px 12px #ff36df1b, 0 2px 24px #0e1b30aa, 0 0 0 2px #ff36dfcc;
+      --button-gradient: linear-gradient(90deg, #ff36df 50%, #00ffd2 100%);
+      --matrix-rain: #ff36df;
+    }
+    [data-theme="neonnight"] {
+      --main-bg: linear-gradient(120deg, #060818 0%, #193fa6 80%, #04e2c5 100%);
+      --main-border: #04e2c5;
+      --main-text: #e4fff6;
+      --option-bg: #152039;
+      --option-hover: #04e2c5c4;
+      --container-bg: #101f30ef;
+      --container-color: #fffaea;
+      --card-shadow: 0 8px 32px 12px #04e2c5aa, 0 2px 18px #1f67e855;
+      --button-gradient: linear-gradient(90deg,#193fa6 50%,#04e2c5 100%);
+      --matrix-rain: #04e2c5;
+    }
+    html, body {
+      min-height: 100vh;
+      height: 100%;
+      background: var(--main-bg);
+      color: var(--main-text);
+>>>>>>> ca66b93dba08f855ca0742895f10e7c28cbb5bb4
       font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       overflow-x: hidden;
+<<<<<<< HEAD
       position: relative;
     }
     body {
@@ -22,11 +68,15 @@
       background: #fafbfc url('topo.png') top center no-repeat;
       background-size: cover;
       background-attachment: fixed;
+=======
+      transition: background 0.5s, color 0.5s;
+>>>>>>> ca66b93dba08f855ca0742895f10e7c28cbb5bb4
     }
     body::before {
       content: "";
       position: fixed;
       inset: 0;
+<<<<<<< HEAD
       border: 2px solid #eaeaea;
       border-radius: 28px;
       pointer-events: none;
@@ -167,12 +217,139 @@
       width: 148px;
       margin: 18px auto 0 auto;
       box-shadow: 0 1px 7px #e9f0f477;
+=======
+      border: 8px solid var(--main-border);
+      border-radius: 30px;
+      pointer-events: none;
+      z-index: 10000;
+      box-sizing: border-box;
+      transition: border-color 0.5s;
+    }
+    #matrix-canvas {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.54;
+      mix-blend-mode: lighten;
+      transition: opacity .3s;
+    }
+    .floating-dog {
+      position: fixed;
+      width: 44px;
+      height: 44px;
+      z-index: 2;
+      pointer-events: none;
+      animation: floatDog 12s linear infinite;
+    }
+    @keyframes floatDog {
+      0% { opacity: 0; transform: translateY(120vh) scale(0.88);}
+      10% { opacity: 0.8;}
+      100% { opacity: 0; transform: translateY(-20vh) scale(1.04);}
+    }
+    /* Theme Switch Button */
+    #themeBtn {
+      position: fixed;
+      top: 18px;
+      right: 28px;
+      background: var(--button-gradient);
+      color: var(--main-text);
+      border: none;
+      padding: 10px 19px 10px 19px;
+      border-radius: 28px;
+      font-weight: 700;
+      font-size: 1.05em;
+      z-index: 9999;
+      cursor: pointer;
+      box-shadow: 0 2px 10px #0002;
+      transition: background 0.3s, color 0.3s;
+      opacity: 0.98;
+      letter-spacing: 1px;
+      user-select: none;
+    }
+    #themeBtn:hover { opacity: 1; }
+    /* Twitter Profile Button (BOTTOM RIGHT) */
+    #profileTwitter {
+      position: fixed;
+      right: 30px;
+      bottom: 24px;
+      background: var(--button-gradient);
+      color: #112c42;
+      font-size: 1.12em;
+      padding: 10px 32px 10px 32px;
+      border-radius: 28px;
+      box-shadow: 0 4px 24px #21e6c144;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      z-index: 9999;
+      text-decoration: none;
+      border: 2px solid var(--main-border);
+      transition: background 0.3s,color 0.3s,border 0.4s;
+      outline: none;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    #profileTwitter:hover { 
+      background: linear-gradient(90deg, var(--main-border) 70%, #222 100%);
+      color: #fff;
+      border-color: var(--main-border);
+    }
+    .center-card { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: none; z-index: 3; position: relative; }
+    .landing-card {
+      width: 400px; max-width: 98vw; margin: 0 auto;
+      background: var(--container-bg);
+      box-shadow: var(--card-shadow);
+      border-radius: 28px;
+      border: 5px solid #21e6c155;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      padding: 36px 28px 28px 28px; position: relative; z-index: 30;
+      transition: background 0.5s, color 0.5s, box-shadow 0.4s;
+    }
+    @media (max-width: 600px) {
+      .landing-card { width: 99vw; min-width: 0; border-radius: 17px; padding: 18px 5vw 16px 5vw;}
+      #profileTwitter { right: 8px; left: auto; bottom: 8px; font-size: 1em; padding: 9px 18px;}
+    }
+    .logo-sentient {
+      width: 74px; height: 74px; margin-bottom: 10px;
+      animation: wobble 2.5s infinite cubic-bezier(.77,0,.18,1);
+      filter: drop-shadow(0 0 16px var(--main-border)) drop-shadow(0 0 4px var(--main-border));
+      z-index: 2;
+      background: none;
+    }
+    @keyframes wobble { 0%{transform:scale(1) rotate(-2deg);} 25%{transform:scale(1.08) rotate(2deg);} 50%{transform:scale(1) rotate(-1deg);} 75%{transform:scale(1.05) rotate(1deg);} 100%{transform:scale(1) rotate(-2deg);} }
+    .landing-title { font-size: 2em; font-weight: 900; margin: 0 0 5px 0; letter-spacing: 1.3px; text-shadow: 0 2px 13px var(--main-border), 1px 1px 0 var(--main-border); background: linear-gradient(90deg, var(--main-border) 30%, #278ea5 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .landing-sub { font-size: 1.07em; margin-bottom: 12px; color: #a9fff2; text-shadow: 0 1px 10px var(--main-border); font-weight: 400; letter-spacing: 1px; z-index: 2;}
+    .avatar-label { font-weight: 700; font-size: 1em; margin-top: 7px; margin-bottom: 4px; color: #affffc; text-shadow: 0 1px 8px #278ea588; letter-spacing: 0.3px; text-align: center; width: 100%; }
+    .avatar-select { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; z-index: 4;}
+    .avatar-img { width: 38px; height: 38px; border-radius: 50%; border: 2.5px solid var(--main-border); box-shadow: 0 2px 10px #21e6c122; cursor: pointer; object-fit: cover; transition: border 0.15s, box-shadow 0.2s, transform 0.15s; background: #101a3a33; opacity: 0.87; }
+    .avatar-img.selected { border: 2.5px solid var(--main-border); box-shadow: 0 4px 14px var(--main-border), 0 0 0 5px #21e6c124; transform: scale(1.13); opacity: 1; }
+    .input-label { text-align: left; font-size: 1em; margin: 10px 0 3px 2px; color: var(--main-border); font-weight: 600; letter-spacing: 1px; opacity: 0.97; width: 100%; display: block; }
+    .input-box { width: 100%; display: flex; flex-direction: column; gap: 0; margin-bottom: 0; align-items: stretch;}
+    .input-fields-row { width: 100%; display: flex; flex-direction: row; gap: 7px; align-items: center; margin-top: 4px; }
+    input.input { padding: 12px 11px; border-radius: 7px; font-size: 1.07em; border: 1.5px solid var(--main-border); width: 100%; box-shadow: 0 0 8px #21e6c133, 0 0 1.5px var(--main-border); background: #183054; color: var(--main-text); outline: none; margin-bottom: 0; transition: box-shadow 0.3s, border 0.2s; }
+    input.input:focus { border: 2px solid var(--main-border); box-shadow: 0 0 16px 3px var(--main-border); background: #1a1930; }
+    button.start-btn, button.tweet-btn {
+      padding: 13px 0;
+      font-size: 1.07em;
+      background: var(--button-gradient);
+      color: #132c33;
+      border: none;
+      border-radius: 11px;
+      cursor: pointer;
+      transition: all 0.17s;
+      font-weight: 700;
+      width: 150px;
+      margin: 18px auto 0 auto;
+      box-shadow: 0 2px 13px #21e6c144, 0 1px 0 #278ea5;
+>>>>>>> ca66b93dba08f855ca0742895f10e7c28cbb5bb4
       letter-spacing: 0.6px;
       display: block;
       text-align: center;
       float: none;
     }
     button.start-btn:hover, button.tweet-btn:hover {
+<<<<<<< HEAD
       background: #19b48d;
       color: #fff;
       box-shadow: 0 2px 10px #19b48d33;
@@ -331,6 +508,35 @@
   </style>
 </head>
 <body>
+=======
+      background: linear-gradient(90deg, var(--main-border) 60%, #222 100%);
+      color: #fff;
+      box-shadow: 0 2px 22px var(--main-border), 0 1.5px 0 var(--main-border);
+      transform: translateY(-1.5px) scale(1.04);
+    }
+    .dog-walk-container { position: fixed; top: 50%; left: 0; width: 100vw; height: 110px; z-index: 8888; pointer-events: none; display: flex; align-items: flex-end; justify-content: flex-start; background: transparent;}
+    .dog-walk-svg { width: 60px; height: 60px; margin: 0 12px; animation: dogwalk 2.7s linear forwards;}
+    @keyframes dogwalk { from { transform: translateX(-100vw);} to { transform: translateX(110vw);} }
+    .container { display: none; margin: 64px auto 0 auto; background: var(--container-bg); padding: 28px 18px 20px 18px; border-radius: 22px; border: 6px solid var(--main-border); box-shadow: var(--card-shadow); color: var(--container-color); max-width: 450px; z-index: 2; position: relative; text-align: center;}
+    .question { font-size: 1.19em; margin-bottom: 17px; color: var(--container-color); font-weight: 600; text-align: left;}
+    .option { background: var(--option-bg); margin: 10px 0; padding: 14px 13px; border: none; border-radius: 9px; cursor: pointer; width: 100%; text-align: left; transition: 0.3s; font-size: 1.01em; font-weight: 500; color: var(--container-color); box-shadow: 0 1px 4px #21e6c122;}
+    .option:hover { background: var(--option-hover); color: #fff; box-shadow: 0 2px 16px var(--main-border);}
+    .timer-bar-wrap { width: 100%; background: #183054; border-radius: 8px; margin-bottom: 16px; height: 16px; overflow: hidden; position: relative; box-shadow: 0 2px 8px #21e6c122;}
+    .timer-bar { height: 100%; background: var(--button-gradient); width: 100%; transition: width 0.2s;}
+    .timer-count { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #001d32; font-size: 1.1em; font-weight: bold; text-shadow: 0 2px 6px var(--main-border); letter-spacing: 2px; z-index: 2;}
+    .result { display: none; margin: 70px auto 0 auto; background: var(--container-bg); padding: 36px 18px 32px 18px; border-radius: 22px; border: 6px solid var(--main-border); box-shadow: var(--card-shadow); color: var(--container-color); max-width: 410px; z-index: 3; position: relative; text-align: center; align-items: center; justify-content: center; flex-direction: column;}
+    .result h2 { font-size: 2.2em; font-weight: 900; color: var(--main-border); margin: 0 0 12px 0; text-shadow: 0 2px 16px var(--main-border);}
+    .result-score { font-size: 2.7em; font-weight: 800; letter-spacing: 1.5px; color: #fff; margin-bottom: 28px; text-shadow: 0 2px 18px #278ea577; background: linear-gradient(90deg, var(--main-border) 30%, #278ea5 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+    .tweet-btn { margin-top: 18px; background: var(--button-gradient); color: #183054; padding: 12px 22px; font-size: 1.08em; border-radius: 14px; font-weight: bold; border: none; cursor: pointer; box-shadow: 0 2px 13px #21e6c122; letter-spacing: 0.5px; transition: background 0.2s, color 0.2s; display: inline-block;}
+    .tweet-btn:hover { background: linear-gradient(90deg, var(--main-border) 60%, #278ea5 100%); color: #fff; box-shadow: 0 2px 19px #21e6c155; transform: scale(1.04) translateY(-2px);}
+  </style>
+</head>
+<body data-theme="default">
+  <!-- Matrix Rain -->
+  <canvas id="matrix-canvas"></canvas>
+  <!-- Theme Button -->
+  <button id="themeBtn" onclick="cycleTheme()">🎨 Theme</button>
+>>>>>>> ca66b93dba08f855ca0742895f10e7c28cbb5bb4
   <!-- Twitter profile bottom right -->
   <a href="https://x.com/XbtChoudhary" target="_blank" id="profileTwitter">
     <svg width="22" height="22" viewBox="0 0 32 32" fill="none" style="margin-right:7px;vertical-align:middle;"><path fill="currentColor" d="M32 6.076a13.14 13.14 0 0 1-3.769 1.031 6.601 6.601 0 0 0 2.887-3.633 13.193 13.193 0 0 1-4.17 1.594A6.56 6.56 0 0 0 22.16 4c-3.627 0-6.563 2.936-6.563 6.564 0 .514.058 1.016.17 1.495C10.318 11.86 5.485 9.383 2.228 5.652a6.532 6.532 0 0 0-.888 3.303c0 2.277 1.159 4.287 2.92 5.465a6.52 6.52 0 0 1-2.977-.822v.083c0 3.181 2.262 5.834 5.265 6.437a6.573 6.573 0 0 1-2.971.112c.837 2.613 3.264 4.514 6.14 4.564a13.176 13.176 0 0 1-8.15 2.808c-.53 0-1.052-.03-1.57-.092a18.61 18.61 0 0 0 10.064 2.948c12.077 0 18.697-10.007 18.697-18.695 0-.285-.007-.568-.02-.85A13.282 13.282 0 0 0 32 6.076z"/></svg>
@@ -339,8 +545,19 @@
   <!-- Main quiz area -->
   <div class="center-card">
     <div class="landing-card" id="landing">
+<<<<<<< HEAD
       <!-- Sentient Logo Image -->
       <img src="image.png" alt="Sentient Logo" class="logo-sentient-img" />
+=======
+      <!-- Sentient Logo -->
+      <svg class="logo-sentient" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="50" rx="40" ry="19" fill="none" stroke="#21e6c1" stroke-width="8"/>
+        <ellipse cx="50" cy="50" rx="25" ry="38" fill="none" stroke="#278ea5" stroke-width="5"/>
+        <circle cx="50" cy="50" r="16" fill="#21e6c1"/>
+        <ellipse cx="50" cy="50" rx="13" ry="3.5" fill="#fff" opacity="0.16"/>
+        <text x="50%" y="62%" text-anchor="middle" font-size="22" fill="#183054" font-family="monospace" font-weight="bold" dy=".3em">S</text>
+      </svg>
+>>>>>>> ca66b93dba08f855ca0742895f10e7c28cbb5bb4
       <div class="landing-title">Sentient Quiz</div>
       <div class="landing-sub">Test your AGI community knowledge</div>
       <div class="avatar-label">Choose your avatar:</div>
@@ -354,6 +571,11 @@
       </div>
     </div>
   </div>
+<<<<<<< HEAD
+=======
+  <!-- Dobby Walk Animation (created by JS) -->
+  <div class="dog-walk-container" id="dogWalk" style="display:none;"></div>
+>>>>>>> ca66b93dba08f855ca0742895f10e7c28cbb5bb4
   <!-- Quiz -->
   <div class="container" id="quizContainer">
     <div class="timer-bar-wrap">
@@ -370,6 +592,115 @@
     <button class="tweet-btn" onclick="postToTwitter()">Post My Score 🐾</button>
   </div>
   <script>
+<<<<<<< HEAD
+=======
+    // ===== THEME & MATRIX RAIN COLORS =====
+    const themes = [
+      {name:"default", color:"#21e6c1"},
+      {name:"cyberpunk", color:"#ff36df"},
+      {name:"neonnight", color:"#04e2c5"}
+    ];
+    let themeIndex = 0;
+    function cycleTheme() {
+      themeIndex = (themeIndex+1) % themes.length;
+      document.body.setAttribute("data-theme", themes[themeIndex].name);
+      matrixRainColor = themes[themeIndex].color;
+    }
+    // ===== MATRIX RAIN (AWESOME VERSION) =====
+    const matrixWord = "SENTIENT";
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth, height = window.innerHeight;
+    let fontSize = 27, columns, drops, matrixRainColor = getComputedStyle(document.body).getPropertyValue('--matrix-rain').trim();
+    function resizeMatrix() {
+      width = window.innerWidth; height = window.innerHeight;
+      canvas.width = width; canvas.height = height;
+      columns = Math.floor(width / fontSize);
+      drops = [];
+      for(let i=0; i<columns; ++i) {
+        drops[i] = Math.random()*height/fontSize|0;
+      }
+    }
+    resizeMatrix();
+    window.addEventListener('resize', resizeMatrix);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(8,19,31,0.22)";
+      ctx.fillRect(0,0,width,height);
+      ctx.font = fontSize + "px monospace";
+      // Animated color glow effect:
+      let now = Date.now() / 1400;
+      for(let i=0; i<columns; ++i) {
+        let y = drops[i];
+        let x = i*fontSize;
+        // Each drop in a sine wave to look more "flowing"
+        let waveY = y + Math.sin(i/3 + now)*0.7;
+        let char = matrixWord[Math.floor(Math.random()*matrixWord.length)];
+        // Glow
+        ctx.shadowColor = matrixRainColor;
+        ctx.shadowBlur = 18;
+        ctx.fillStyle = matrixRainColor;
+        ctx.globalAlpha = 0.79 + 0.25*Math.sin((i+now)*2);
+        ctx.fillText(char, x, waveY*fontSize);
+        ctx.globalAlpha = 1.0;
+        ctx.shadowBlur = 0;
+        // Drop reset & speed:
+        if(Math.random() > 0.967) drops[i] = 0;
+        else drops[i]++;
+        if(drops[i]*fontSize > height) drops[i] = 0;
+      }
+      requestAnimationFrame(drawMatrix);
+    }
+    drawMatrix();
+    // Listen for theme changes to update rain color
+    const observer = new MutationObserver(() => {
+      let c = getComputedStyle(document.body).getPropertyValue('--matrix-rain').trim();
+      matrixRainColor = c || "#21e6c1";
+    });
+    observer.observe(document.body, { attributes: true, attributeFilter: ["data-theme"] });
+
+    // ===== FLOATING DOBBY DOGS =====
+    function getDogSVG(random=false) {
+      let colors = [
+        {main:"#f9d49a", ear:"#c07d56", nose:"#8b5930"},
+        {main:"#a8e2ff", ear:"#4296b4", nose:"#216083"},
+        {main:"#e4c2ff", ear:"#9155d3", nose:"#563481"},
+        {main:"#e3ffd8", ear:"#84c57b", nose:"#4a6e45"}
+      ];
+      let c = colors[Math.floor(Math.random()*colors.length)];
+      let tilt = random ? ((Math.random()-0.5)*14) : 0;
+      let earFlip = random ? (Math.random()>0.5?-1:1) : 1;
+      return `<svg viewBox="0 0 60 60" fill="none" class="dobbydog" xmlns="http://www.w3.org/2000/svg" style="transform:rotate(${tilt}deg) scaleX(${earFlip});">
+      <ellipse cx="30" cy="35" rx="18" ry="14" fill="${c.main}"/>
+      <ellipse cx="17" cy="23" rx="7" ry="11" fill="${c.ear}" transform="rotate(-12 17 23)"/>
+      <ellipse cx="43" cy="23" rx="7" ry="11" fill="${c.ear}" transform="rotate(12 43 23)"/>
+      <ellipse cx="30" cy="39" rx="12" ry="8" fill="#fff" opacity="0.17"/>
+      <ellipse cx="30" cy="40" rx="8" ry="4" fill="#fff" opacity="0.12"/>
+      <ellipse cx="30" cy="37" rx="9" ry="4" fill="${c.main}" />
+      <ellipse cx="24" cy="34" rx="2.1" ry="3" fill="#fff" />
+      <ellipse cx="36" cy="34" rx="2.1" ry="3" fill="#fff" />
+      <ellipse cx="24" cy="33" rx="1.2" ry="1.5" fill="#222" />
+      <ellipse cx="36" cy="33" rx="1.2" ry="1.5" fill="#222" />
+      <ellipse cx="30" cy="41" rx="2.1" ry="1.1" fill="${c.nose}" />
+      <ellipse cx="30" cy="45" rx="6" ry="3" fill="#000" opacity="0.08"/>
+      <rect x="14" y="47" width="7" height="9" rx="3" fill="${c.main}" transform="rotate(12 14 47)"/>
+      <rect x="39" y="47" width="7" height="9" rx="3" fill="${c.main}" transform="rotate(-12 46 47)"/>
+      </svg>`;
+    }
+    function floatDog() {
+      const img = document.createElement('div');
+      img.className = "floating-dog";
+      img.style.left = (10 + Math.random()*80) + "vw";
+      img.style.animationDuration = (8 + Math.random()*8) + "s";
+      img.innerHTML = getDogSVG(true);
+      img.style.top = "110vh";
+      document.body.appendChild(img);
+      setTimeout(() => img.remove(), 13000);
+    }
+    setInterval(floatDog, 2200);
+    for (let i = 0; i < 5; ++i) setTimeout(floatDog, i*950);
+
+>>>>>>> ca66b93dba08f855ca0742895f10e7c28cbb5bb4
     // ===== AVATAR SELECTOR =====
     let selectedAvatar = "avatar1.png";
     const avatarCount = 10;
@@ -390,6 +721,28 @@
     }
     renderAvatars();
 
+<<<<<<< HEAD
+=======
+    // ===== DOBBY DOGS WALKING ANIMATION =====
+    function showDogWalk(cb) {
+      const container = document.getElementById('dogWalk');
+      container.innerHTML = "";
+      container.style.display = "flex";
+      let count = 7 + Math.floor(Math.random()*3);
+      for(let i=0; i<count; ++i){
+        const dogDiv = document.createElement('div');
+        dogDiv.className = "dog-walk-svg";
+        dogDiv.style.animationDelay = (i*0.21 + Math.random()*0.09) + "s";
+        dogDiv.innerHTML = getDogSVG(true);
+        container.appendChild(dogDiv);
+      }
+      setTimeout(() => {
+        container.style.display = "none";
+        if(cb) cb();
+      }, 2700);
+    }
+
+>>>>>>> ca66b93dba08f855ca0742895f10e7c28cbb5bb4
     // ===== QUIZ LOGIC =====
     const questions = [
       { q: "What is the mission of the Sentient Foundation?", options: [
@@ -505,8 +858,16 @@
         alert("Please enter your username."); return;
       }
       document.querySelector('.center-card').style.display = 'none';
+<<<<<<< HEAD
       document.getElementById('quizContainer').style.display = 'block';
       current = 0; score = 0; showQuestion();
+=======
+      // Show dog walk animation first
+      showDogWalk(() => {
+        document.getElementById('quizContainer').style.display = 'block';
+        current = 0; score = 0; showQuestion();
+      });
+>>>>>>> ca66b93dba08f855ca0742895f10e7c28cbb5bb4
     }
     function showQuestion() {
       clearTimeout(timer); clearInterval(timerInterval); timeLeft = 12;
